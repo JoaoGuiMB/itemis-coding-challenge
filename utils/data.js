@@ -58,6 +58,6 @@ export const input3 = [
     name: "box of chocolates",
     price: 11.25,
     isImported: true,
-    type: "medical",
+    type: "food",
   },
 ];

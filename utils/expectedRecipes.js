@@ -49,7 +49,7 @@ export const recipeInput3 = {
       finalPrice: 9.75,
     },
     {
-      name: "imported box of chocolates",
+      name: "box of chocolates",
       finalPrice: 11.85,
     },
   ],
