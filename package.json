@@ -2,10 +2,10 @@
   "name": "itemis-coding-challenge",
   "version": "1.0.0",
   "description": "coding challenge for itemis",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
-    "start": "node index.ts",
+    "start": "node main.js",
     "test": "node --test"
   },
   "author": "@JoaoGuiMB",

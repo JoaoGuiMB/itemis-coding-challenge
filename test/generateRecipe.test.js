@@ -1,12 +1,12 @@
 import test from "node:test";
 import assert from "node:assert";
-import { input1, input2, input3 } from "./utils/data.js";
+import { input1, input2, input3 } from "../utils/data.js";
 import {
   recipeInput1,
   recipeInput2,
   recipeInput3,
-} from "./utils/expectedRecipes.js";
-import generateRecipe from "./generateRecipe.js";
+} from "../utils/expectedRecipes.js";
+import generateRecipe from "../lib/generateRecipe.js";
 
 test("calculate recipe", async (t) => {
   await t.test("first input", () => {

@@ -1,5 +1,5 @@
-import generateRecipe from "./generateRecipe.js";
-import printRecipe from "./printRecipe.js";
+import generateRecipe from "./lib/generateRecipe.js";
+import printRecipe from "./lib/printRecipe.js";
 import { input1, input2, input3 } from "./utils/data.js";
 
 const main = () => {
