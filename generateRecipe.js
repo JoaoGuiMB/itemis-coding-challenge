@@ -12,7 +12,7 @@ const generateRecipe = (cartItems) => {
     const { finalPrice, tax, name } = calculateProductFinalPrice(item);
     taxes += tax;
     total += finalPrice;
-    products.push({ name, finalPrice });
+    products.push({ name, finalPrice, isImported: item.isImported });
   }
   taxes = roundTax(taxes);
   total = roundDecimal(total);
