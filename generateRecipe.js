@@ -3,6 +3,7 @@ import {
   BASE_TAX,
   PRODUCTS_TYPES_WITHOUT_TAX,
 } from "./utils/constants.js";
+
 const generateRecipe = (cartItems) => {
   let taxes = 0;
   let total = 0;
@@ -13,6 +14,8 @@ const generateRecipe = (cartItems) => {
     total += finalPrice;
     products.push({ name, finalPrice });
   }
+  taxes = roundTax(taxes);
+  total = roundDecimal(total);
   return {
     taxes,
     total,
@@ -23,22 +26,34 @@ const generateRecipe = (cartItems) => {
 const calculateProductFinalPrice = (product) => {
   const { name, type, price, isImported } = product;
   let finalPrice = price;
+  let tax = 0;
   if (isImported) {
-    finalPrice *= 1 + IMPORTED_TAX;
+    const importedTaxValue = price * IMPORTED_TAX;
+    tax += importedTaxValue;
   }
   if (!PRODUCTS_TYPES_WITHOUT_TAX.includes(type)) {
-    finalPrice *= 1 + BASE_TAX;
+    const baseTax = price * BASE_TAX;
+    tax += baseTax;
   }
-
+  tax = roundTax(tax);
+  finalPrice += tax;
+  finalPrice = roundDecimal(finalPrice);
   return {
     finalPrice,
-    tax: finalPrice - price,
+    tax,
     name,
   };
 };
 
-const roundPrice = (price) => {
-  return Math.round(price * 100) / 100;
+const roundTax = (tax) => {
+  const roundedTax =
+    Math.ceil((Math.round(tax * 100) / 100).toFixed(2) * 20) / 20;
+
+  return roundedTax;
+};
+
+const roundDecimal = (price) => {
+  return +price.toFixed(2);
 };
 
 export default generateRecipe;
